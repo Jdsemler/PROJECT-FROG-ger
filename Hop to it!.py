@@ -3,6 +3,8 @@ root = Tk()
 # Create our drawpad and oval
 drawpad = Canvas(root, width=900,height=500, background='white')
 oval = drawpad.create_oval(40,40,80,80, fill="green")
+truck1 = drawpad.create_polygon(40, 40, 80, 80, fill="red")
+truck2 = drawpad.create_polygon(20,40,20,40)
 
 class MyApp:
 	def __init__(self, parent):
@@ -71,6 +73,8 @@ class MyApp:
 		drawpad.move(oval,20,0)
  		global oval
  		global drawpad
+ 		
+
 
 myapp = MyApp(root)
 root.mainloop()
