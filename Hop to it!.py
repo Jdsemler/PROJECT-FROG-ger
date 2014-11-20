@@ -6,6 +6,8 @@ oval = drawpad.create_oval(40,40,80,80, fill="green")
 truck1 = drawpad.create_polygon(40, 40, 80, 80, fill="red")
 truck2 = drawpad.create_polygon(20,40,20,40)
 
+
+
 class MyApp:
 	def __init__(self, parent):
 	        # Make sure the drawpad is accessible from inside the function
@@ -35,11 +37,6 @@ class MyApp:
 		self.button4.grid(row=0,column=4)		
 		self.button4.bind("<Button-1>", self.button4Click)
  						
- 		# "Bind" an action to the first button												
-		self.button1.bind("<Button-1>", self.button1Click)
- 		# Create the code to bind an action to the second button
- 		# Do not change "<Button-1>"
- 		 
  		  
  		# This creates the drawpad - no need to change this 
  		drawpad.pack()		
@@ -51,30 +48,27 @@ class MyApp:
 		global oval
 		global drawpad
 			
- 
- 		
  	def button2Click(self, event):   
- 		# Make the oval move to the left!
+ 		# Make the oval move up!
                  # "global" makes sure that we can access our oval and our drawpad
 		drawpad.move(oval,0,-20)
  		global oval
  		global drawpad
  		
         def button3Click(self, event):   
- 		# Make the oval move to the left!
+ 		# Make the oval move down!
                  # "global" makes sure that we can access our oval and our drawpad
 		drawpad.move(oval,0,20)
  		global oval
  		global drawpad
  		
  	def button4Click(self, event):   
- 		# Make the oval move to the left!
+ 		# Make the oval move to the right!
                  # "global" makes sure that we can access our oval and our drawpad
 		drawpad.move(oval,20,0)
  		global oval
  		global drawpad
  		
-
 
 myapp = MyApp(root)
 root.mainloop()
