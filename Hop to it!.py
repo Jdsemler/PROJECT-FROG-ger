@@ -1,8 +1,10 @@
 from Tkinter import *
 root = Tk()
 # Create our drawpad and oval
+drawpadwidth = 900
+drawpadheight = 500
 drawpad = Canvas(root, width=900,height=500, background='white')
-oval = drawpad.create_oval(40,40,80,80, fill="green")
+frog = drawpad.create_oval(40,40,80,80, fill="green")
 truck1 = drawpad.create_polygon(40, 40, 80, 80, fill="red")
 truck2 = drawpad.create_polygon(20,40,20,40)
 
@@ -36,37 +38,50 @@ class MyApp:
 		self.button4.configure(text="right", background= "light blue")
 		self.button4.grid(row=0,column=4)		
 		self.button4.bind("<Button-1>", self.button4Click)
- 						
- 		  
- 		# This creates the drawpad - no need to change this 
  		drawpad.pack()		
 
-	def button1Click(self, event):   
-		# Make the oval move to the left!
-                # "global" makes sure that we can access our oval and our drawpad
-		drawpad.move(oval,-20,0)
-		global oval
+        def button1Click(self, event):   
+	   #Colision detection for left
+	       global frog
+	       global drawpad
+	       global drawpadwidth
+	       global drawpadheight
+	       x1,y1,x2,y2 = drawpad.coords(frog)
+	       #if x1 > 0:
+		    #drawpad.move(frog,-10,0)
+	
+	def button2Click(self, event):   
+	   #colision detection for up
+		global frog
 		global drawpad
+		global drawpadwidth
+		global drawpadheight
+		x1,y1,x2,y2 = drawpad.coords(frog)
+		if y1 > 0:
+		    drawpad.move(frog,0,-10)
+	    				
+ 	def button3Click(self, event):   
+	   #colision detection for up
+		global frog
+		global drawpad
+		global drawpadwidth
+		global drawpadheight
+		x1,y1,x2,y2 = drawpad.coords(frog)
+		if y2 > 0:
+		    drawpad.move(frog,0,10)													
+ 		  
+ 		# This creates the drawpad - no need to change this 
+
 			
- 	def button2Click(self, event):   
- 		# Make the oval move up!
-                 # "global" makes sure that we can access our oval and our drawpad
-		drawpad.move(oval,0,-20)
- 		global oval
- 		global drawpad
+ 	
  		
-        def button3Click(self, event):   
- 		# Make the oval move down!
-                 # "global" makes sure that we can access our oval and our drawpad
-		drawpad.move(oval,0,20)
- 		global oval
- 		global drawpad
+        
  		
  	def button4Click(self, event):   
  		# Make the oval move to the right!
                  # "global" makes sure that we can access our oval and our drawpad
-		drawpad.move(oval,20,0)
- 		global oval
+		drawpad.move(frog,20,0)
+ 		global frog
  		global drawpad
  		
 
