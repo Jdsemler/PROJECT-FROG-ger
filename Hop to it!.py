@@ -19,17 +19,21 @@ Grass2 = drawpad.create_rectangle (250,0,350,500, fill= 'chartreuse')
 Road2 = drawpad.create_rectangle (350,0,450,500, fill= 'grey')
 Grass3 = drawpad.create_rectangle (450,0,550,500, fill= 'chartreuse')
 Road4 = drawpad.create_rectangle (550,0,650,500, fill= 'grey')
+<<<<<<< HEAD
 >>>>>>> origin/master
 
+=======
+RoadDivider = drawpad.create_rectangle (650,0,650,500, fill= 'black')
+>>>>>>> parent of ccad349... ignore this, github wanted a commit for this.
 Road5 = drawpad.create_rectangle (550,0,750,500, fill= 'grey')
 pond = drawpad.create_rectangle (750,0,900,500, fill= 'blue')
 
 #character and enemies
 oval = drawpad.create_oval(40,40,80,80, fill='green')
-#truck1 = drawpad.create_rectangle(40, 40, 80, 80, fill='red')
-#truck2 = drawpad.create_rectangle(20,40,20,40, fill='blue')
-#truck3 = drawpad.create_rectangle
-#truck4 = drawpad.create_rectangle
+truck1 = drawpad.create_polygon(40, 40, 80, 80, fill='red')
+truck2 = drawpad.create_polygon(20,40,20,40, fill='blue')
+
+
 class MyApp:
 	def __init__(self, parent):
                 # Make sure the drawpad is accessible from inside the function
