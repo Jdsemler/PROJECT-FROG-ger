@@ -54,6 +54,9 @@ class MyApp:
 		self.button4.configure(text="right", background= "light blue")
 		self.button4.grid(row=0,column=4)		
 		self.button4.bind("<Button-1>", self.button4Click)
+           	# This creates the drawpad - no need to change this 
+           	drawpad.pack()		
+
  		self.animate2()
  						
         #truck movement
@@ -72,12 +75,41 @@ class MyApp:
             drawpad.move(truck3,0,dir0)
             drawpad.move(truck4,0,dir0)
             # Wait for 1 millisecond, then recursively call our animate function
+            self.collisionDetect()
             drawpad.after(5, self.animate2)
+            
 
- 													
- 		  
- 	# This creates the drawpad - no need to change this 
- 	drawpad.pack()		
+ 	
+ 	#function for reseting
+ 	def resetplayer(self):
+            x1,y1,x2,y2 = drawpad.coords(oval)
+ 	    movex = 40-x1
+ 	    movey = 80-y1
+ 	    drawpad.move(oval,movex,movey)
+ 	    
+
+
+ 	def collisionDetect(self):
+            #Reset if hit trucks (coords)
+            x1,y1,x2,y2 = drawpad.coords(oval)
+            truckx1,trucky1,truckx2,trucky2 = drawpad.coords(truck)
+   	    truck2x1,truck2y1,truck2x2,truck2y2 = drawpad.coords(truck2)												
+            truck3x1,truck3y1,truck3x2,truck3y2 = drawpad.coords(truck3)
+   	    truck4x1,truck4y1,truck4x2,truck4y2 = drawpad.coords(truck4)
+   	    pondx1,pondy1,pondx2,pondy2 = drawpad.coords(pond) 
+   	     	#truck reset
+            if x2>truckx1 and x2<truckx2 and y1>trucky1 and y2<trucky2:
+                print "truck1"
+           	self.resetplayer()
+            if x2>truck2x1 and x2<truck2x2 and y1>truck2y1 and y2<truck2y2:
+           	self.resetplayer()
+            if x2>truck3x1 and x2<truck3x2 and y1>truck3y1 and y2<truck3y2:
+           	self.resetplayer()
+            if x2>truck4x1 and x2<truck4x2 and y1>truck4y1 and y2<truck4y2:
+           	self.resetplayer()
+            if x2>pondx1 and x2<pondx2 and y1>pondy1 and y2<pondy2:
+                self.resetplayer()
+   	    	     		  	  	     		  	  
 
 	def button1Click(self, event):   
 		# Make the oval move to the left!
